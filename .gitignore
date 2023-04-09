@@ -9,10 +9,10 @@ core/*.db
 mdsas/*.db
 
 # API Key
-mdsas/weatherapi.key
+ascent/weatherapi.key
 
 # Test Logs
 mdsas/tests/*.log
 mdsas/tests/*.xml
-mdsas/tests/mdsas.db
-mdsas/tests/reports/archive/*
+ascent/tests/mdsas.db
+ascent/tests/reports/archive/*
