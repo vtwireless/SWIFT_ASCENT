@@ -3,6 +3,9 @@ ENVIRONMENT = 'DEVELOPMENT'
 ADMIN_EMAIL = 'admin'
 ADMIN_PWD = 'admin'
 
+# App Settings
+APP_NAME = 'swift_ascent'
+
 # Database Settings
 DATABASE = dict(
     username='',
@@ -11,7 +14,7 @@ DATABASE = dict(
     port='',
     db=''
 )
-SQLITE_FILE = 'mdsas.db'
+SQLITE_FILE = f"{APP_NAME}.db"
 DEVELOPMENT_DATABASE_URI = f'sqlite:///{SQLITE_FILE}?check_same_thread=False'
 PRODUCTION_DATABASE_URI = f"dialect+driver://{DATABASE['username']}:{DATABASE['password']}@{DATABASE['hostname']}:" \
                           f"{DATABASE['password']}/{DATABASE['db']}"
@@ -29,5 +32,16 @@ INQUIRYLOG = 'inquirylogs'
 GRANTREQUEST = 'grantrequest'
 BASESTATION_TABLE = 'basestations'
 
-# App Settings
-APP_NAME = 'swift_ascent'
+# Simulator Settings
+EXCLUSION_ZONE_RADIUS = 5000
+SIMULATION_COUNT = 3
+BS_COUNT = 33
+SIMULATOR_INPUT = {
+    "lat_FSS": 37.20250,
+    "lon_FSS": -80.43444,
+    "radius": EXCLUSION_ZONE_RADIUS,
+    "simulation_count": SIMULATION_COUNT,
+    "bs_ue_max_radius": 1000,
+    "bs_ue_min_radius": 1,
+    "base_station_count": BS_COUNT
+}

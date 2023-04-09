@@ -124,7 +124,7 @@ class DatabaseController:
     # In[ --- SETTINGS CONTROLS --- ]
 
     def get_sas_settings(self, algorithm=None):
-        self.settings_controller.get_sas_settings(algorithm)
+        return self.settings_controller.get_sas_settings(algorithm)
 
     def set_algorithm_settings(self, result):
         self.settings_controller.set_algorithm_settings(result)

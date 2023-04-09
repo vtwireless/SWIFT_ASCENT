@@ -46,7 +46,7 @@ class SettingsController:
             message = f"GRANT: {result['algorithm']}, " \
                       f"HB: {str(result['heartbeatInterval'])}, " \
                       f"REM: {result['REMAlgorithm']}"
-            print(message)
+            return message
 
         except Exception as err:
             raise Exception(str(err))
