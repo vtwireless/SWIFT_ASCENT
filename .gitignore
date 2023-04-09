@@ -6,13 +6,13 @@ FrontEnd/node_modules/
 
 # Database files
 core/*.db
-mdsas/*.db
+ascent/*.db
 
 # API Key
 ascent/weatherapi.key
 
 # Test Logs
-mdsas/tests/*.log
-mdsas/tests/*.xml
-ascent/tests/mdsas.db
+ascent/tests/*.log
+ascent/tests/*.xml
+ascent/tests/*.db
 ascent/tests/reports/archive/*
