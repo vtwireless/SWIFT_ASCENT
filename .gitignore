@@ -6,7 +6,7 @@ FrontEnd/node_modules/
 
 # Database files
 core/*.db
-ascent/*.db
+ascent/db/*
 
 # API Key
 ascent/weatherapi.key
