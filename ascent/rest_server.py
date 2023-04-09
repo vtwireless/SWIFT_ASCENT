@@ -55,7 +55,7 @@ def root():
     return {"message": "Server is Running!"}
 
 
-# In[ --- User Management ---]
+# In[ --- User Management --- ]
 @server.route('/suLogin', methods=['POST'])
 def suLogin():
     """
@@ -148,7 +148,7 @@ def checkEmailAvailability():
         }
 
 
-# In[ --- Node Management ---]
+# In[ --- Node Management --- ]
 
 @server.route('/getNodesRequest', methods=['GET'])
 def getNodes():
@@ -199,7 +199,7 @@ def updateNode():
     return response
 
 
-# In[ --- Base Station Management ---]
+# In[ --- Base Station Management --- ]
 
 @server.route('/getBaseStations', methods=['GET'])
 def getBaseStations():
@@ -339,7 +339,7 @@ def deleteGrantRequest():
         }
 
 
-# In[ --- Tier Class Management ---]
+# In[ --- Tier Class Management --- ]
 
 @server.route('/getTierClassById', methods=['POST'])
 def getTierClassById():
@@ -369,6 +369,32 @@ def getTierClass():
 def createTierClass():
     try:
         response = db.create_tierclass(request.get_json())
+        return response
+
+    except Exception as err:
+        return {
+            'status': 0, 'message': str(err)
+        }
+
+
+# In[ --- ASCENT Simulator Feedback --- ]
+
+@server.route('/getSimulatorInput', methods=['GET'])
+def getSimulatorInput():
+    try:
+        response = db.get_simulator_input()
+        return response
+
+    except Exception as err:
+        return {
+            'status': 0, 'message': str(err)
+        }
+
+
+@server.route('/updateSimulatorSettings', methods=['POST'])
+def updateSimulatorSettings():
+    try:
+        response = db.update_simulator_settings(request.get_json())
         return response
 
     except Exception as err:

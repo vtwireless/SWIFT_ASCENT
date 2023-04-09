@@ -1,6 +1,5 @@
 import os
 import sys
-import os
 import uuid
 import threading
 import time
@@ -19,6 +18,7 @@ from controllers.GrantController import GrantController
 from controllers.SettingsController import SettingsController
 from controllers.TierClassController import TierClassController
 from controllers.UsersController import UsersController
+from controllers.ASCENTController import ASCENTController
 from algorithms.SASAlgorithms import SASAlgorithms
 from algorithms import Server_WinnForum as WinnForum
 
@@ -90,7 +90,7 @@ class DatabaseController:
     @staticmethod
     def _delete_db_file():
         try:
-            os.remove(settings.SQLITE_FILE)
+            os.remove(f"db/{settings.SQLITE_FILE}")
         except Exception as exception:
             print(str(exception))
 
@@ -120,6 +120,8 @@ class DatabaseController:
         self._get_pudetections_table()
         # self._get_tierclass_table()
         # self._get_tierassignment_table()
+
+        self.ascent_controller = ASCENTController()
 
     # In[ --- SETTINGS CONTROLS --- ]
 
@@ -562,3 +564,11 @@ class DatabaseController:
         ).start()
 
         return obstructionArr
+
+    # In[ --- ASCENT Simulator Feedback --- ]
+
+    def get_simulator_input(self):
+        return self.ascent_controller.get_simulator_input()
+
+    def update_simulator_settings(self, payload):
+        return self.ascent_controller.configure_simulator_settings(payload)
