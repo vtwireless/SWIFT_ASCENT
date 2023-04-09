@@ -33,6 +33,7 @@ GRANTREQUEST = 'grantrequest'
 BASESTATION_TABLE = 'basestations'
 
 # Simulator Settings
+SIM_SETTINGS_FILE = "db/sim_settings.json"
 EXCLUSION_ZONE_RADIUS = 5000
 EXCLUSION_ZONE_RADIUS_STEP = 500
 SIMULATION_COUNT = 3
