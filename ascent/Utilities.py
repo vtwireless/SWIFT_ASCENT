@@ -1,4 +1,5 @@
 import random
+import geopy.distance as gdist
 
 import algorithms.Server_WinnForum as WinnForum
 import algorithms.CBSD as CBSD
@@ -179,5 +180,13 @@ class Utilities:
             obfuscationArr.append((channelFreqLow, puLowFreq))
 
         return obfuscationArr
+
+    @staticmethod
+    def calculate_distance_between_coordinates(srcLatitude, srcLongitude, destLatitude, destLongitude):
+        if not srcLatitude or not srcLongitude or not destLatitude or not destLongitude:
+            return 0.0
+
+        else:
+            return gdist.geodesic((srcLatitude, srcLongitude), (destLatitude, destLongitude)).m
 
 

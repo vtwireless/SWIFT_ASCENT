@@ -6,6 +6,7 @@ import uuid
 import pandas as pd
 
 from settings import settings
+from Utilities import Utilities
 
 
 class SIMInput:
@@ -54,9 +55,12 @@ class ASCENTController:
         self.rain = True
         self.rain_rate = 33.0  # FSS location's rain rate in mm/h -> YES
 
-        self.BASE_STATIONS = self.generate_BS_list(33)
+        self.BASE_STATIONS = self.generate_BS_list(self.BS_COUNT)
 
         sim_settings = self.configure_simulator_settings()
+
+        # self.implement_exclusion_zone()
+        # print(json.dumps(self.BASE_STATIONS[self.BASE_STATIONS["status"] == 0].to_dict("records"), indent=4))
 
     def configure_simulator_settings(self, sim_sett=None):
         if sim_sett is None:
@@ -129,5 +133,29 @@ class ASCENTController:
 
         data_within_zone["status"] = 1
         data_within_zone["unique_id"] = [str(uuid.uuid4()) for i in range(len(data_within_zone))]
+        data_within_zone["dist_from_FSS"] = [
+            Utilities.calculate_distance_between_coordinates(
+                data_within_zone.iloc[i]['latitude'], data_within_zone.iloc[i]['longitude'],
+                self.FSS_COOR[0], self.FSS_COOR[1]
+            ) for i in range(len(data_within_zone))
+        ]
 
         return data_within_zone
+
+    def implement_exclusion_zone(self):
+        non_transmitting_bs = self.BASE_STATIONS[self.BASE_STATIONS["status"] == 0]
+
+        while self.EXCLUSION_ZONE_RADIUS < self.INCLUSION_ZONE_RADIUS:
+            # print("Attempting with Exclusion Zone Radius = ", self.EXCLUSION_ZONE_RADIUS)
+            self.modify_bs_status_in_exclusion_zone()
+            new_NTBS = self.BASE_STATIONS[self.BASE_STATIONS["status"] == 0]
+
+            if len(new_NTBS) > len(non_transmitting_bs):
+                # print("new exclusion zone radius = ", self.EXCLUSION_ZONE_RADIUS)
+                break
+
+            self.EXCLUSION_ZONE_RADIUS += self.EXCLUSION_ZONE_RADIUS_STEP
+
+    def modify_bs_status_in_exclusion_zone(self):
+        self.BASE_STATIONS.loc[self.BASE_STATIONS["dist_from_FSS"] <= self.EXCLUSION_ZONE_RADIUS, "status"] = 0
+
