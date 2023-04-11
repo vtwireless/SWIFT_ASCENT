@@ -8,6 +8,10 @@ placing UEs in them.
 base stations from the CSV file. However, in actual implementation `(line 491)`, simulator just takes the first 
 BS_Count lines from the CSV.
 4. FSS co-ordinates are expected from the DSA framework.
+5. I/N threshold:
+   1. Rainy Weather: -12db
+   2. Normal Weather: -8.5db
+   3. Those violating this would need to be turned off. Hence, creating kind of an exclusion zone
 
 -------------------------------------------------------------------------------------------------------
 
