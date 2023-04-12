@@ -40,6 +40,9 @@ EXCLUSION_ZONE_RADIUS_STEP = 500
 SIMULATION_COUNT = 3
 BS_COUNT = 33
 BS_UE_RADIUS = [1, 1000]
+INR_THRESHOLD = {
+    "rain": -12, "default": -8.5
+}
 # SIMULATOR_INPUT = {
 #     "lat_FSS": 37.20250,
 #     "lon_FSS": -80.43444,

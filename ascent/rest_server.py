@@ -403,6 +403,18 @@ def updateSimulatorSettings():
         }
 
 
+@server.route('/submitSimulatorFeedback', methods=['POST'])
+def submitSimulatorFeedback():
+    try:
+        response = db.accept_simulalator_feedback(request.get_json())
+        return response
+
+    except Exception as err:
+        return {
+            'status': 0, 'message': str(err)
+        }
+
+
 # In[ --- Main ---]
 if __name__ == "__main__":
     # uvicorn.run(server, host="0.0.0.0", port=8000)

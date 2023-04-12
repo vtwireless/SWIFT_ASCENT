@@ -80,6 +80,7 @@ class ASCENTController:
         self.SIMULATION_COUNT = sim_sett.get("simulation_count", self.SIMULATION_COUNT)
         self.BS_UE_RADIUS_MAX = sim_sett.get("bs_ue_max_radius", self.BS_UE_RADIUS_MAX)
         self.BS_UE_RADIUS_MIN = sim_sett.get("bs_ue_min_radius", self.BS_UE_RADIUS_MIN)
+        self.rain = sim_sett.get("rain", self.rain)
 
         if "base_station_count" in sim_sett:
             if sim_sett["base_station_count"] != self.BS_COUNT:
@@ -93,12 +94,13 @@ class ASCENTController:
             "simulation_count": self.SIMULATION_COUNT,
             "bs_ue_max_radius": self.BS_UE_RADIUS_MAX,
             "bs_ue_min_radius": self.BS_UE_RADIUS_MIN,
+            "rain": self.rain,
             "base_station_count": self.BS_COUNT,
             "base_stations": self.BASE_STATIONS.to_dict("records")
         }
 
         with open(self.settings_file, "w+") as outfile:
-            json.dump(data, outfile, indent=3, sort_keys=True)
+            json.dump(data, outfile, indent=4)
 
         return data
 
@@ -134,7 +136,7 @@ class ASCENTController:
             & (all_data["longitude"] >= (self.FSS_COOR[1] - longitude_range))
             & (all_data["latitude"] <= (self.FSS_COOR[0] + latitude_range))
             & (all_data["latitude"] >= (self.FSS_COOR[0] - latitude_range))
-        ].copy(deep=True)
+            ].copy(deep=True)
 
         if len(data_within_zone) > bs_count:
             data_within_zone = data_within_zone.sample(n=bs_count)
@@ -166,4 +168,80 @@ class ASCENTController:
 
     def modify_bs_status_in_exclusion_zone(self):
         self.BASE_STATIONS.loc[self.BASE_STATIONS["dist_from_FSS"] <= self.EXCLUSION_ZONE_RADIUS, "status"] = 0
+
+    def implement_simulator_feedback(self, feedback):
+        feedback = {
+            "Interference_values_UMi_each_Bs": [
+                -31.586625574403882,
+                -35.191424022093855,
+                -18.56990745856593,
+                -35.47686461913297,
+                -38.474774043668745,
+                -11.141635807315321,
+                -62.20374665019345,
+                -19.370609097823518,
+                -26.541763404108263,
+                -47.50175471126143,
+                -17.88587437929757,
+                -35.195019551854266,
+                -52.674793302083586,
+                -29.62489982828368,
+                2.7971202581528343,
+                6.107579300585324,
+                -25.10698899447582,
+                -69.47948320793697,
+                -50.725313822900524,
+                -55.20441399983092,
+                -31.93346957378436,
+                -40.95931464486423,
+                -39.14056440921604,
+                -21.701477074230823,
+                -32.91510580409362,
+                -31.42415785610693,
+                -35.99502355385156,
+                -26.626390561350718,
+                -25.523930166508602,
+                -23.923752659832083,
+                -41.86998035329006,
+                -47.895659185236084,
+                -37.21194865204484
+            ]
+        }
+
+        interference_values = feedback.get("Interference_values_UMi_each_Bs", [])
+        if not interference_values:
+            return {
+                "status": "fail",
+                "message": "no values detected under the key 'Interference_values_UMi_each_Bs'"
+            }
+        elif len(interference_values) != self.BS_COUNT:
+            return {
+                "status": "fail",
+                "message": f"No. of BS is {self.BS_COUNT} while {len(interference_values)} interference values "
+                           f"were provided"
+            }
+
+        if self.rain:
+            threshold = settings.INR_THRESHOLD["rain"]
+        else:
+            threshold = settings.INR_THRESHOLD["default"]
+
+        changed, changes = False, 0
+        for index in range(self.BS_COUNT):
+            if interference_values[index] > threshold and self.BASE_STATIONS.iloc[index]['status'] != 0:
+                self.BASE_STATIONS.iloc[index, self.BASE_STATIONS.columns.get_loc('status')] = 0
+                changed = True
+                changes += 1
+
+                if self.BASE_STATIONS.iloc[index]["dist_from_FSS"] > self.EXCLUSION_ZONE_RADIUS:
+                    self.EXCLUSION_ZONE_RADIUS = round(self.BASE_STATIONS.iloc[index].to_dict()["dist_from_FSS"], 2)
+
+        if changed:
+            self.configure_simulator_settings()
+
+        return {
+            "status": "success",
+            "message": f"{changes} base stations stopped from transmitting. Exclusion Zone Radius is "
+                       f"{self.EXCLUSION_ZONE_RADIUS}"
+        }
 

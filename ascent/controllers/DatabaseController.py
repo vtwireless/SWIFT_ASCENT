@@ -572,3 +572,6 @@ class DatabaseController:
 
     def update_simulator_settings(self, payload):
         return self.ascent_controller.configure_simulator_settings(payload)
+
+    def accept_simulalator_feedback(self, payload):
+        return self.ascent_controller.implement_simulator_feedback(payload)
