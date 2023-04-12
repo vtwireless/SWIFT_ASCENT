@@ -121,11 +121,9 @@ class Score:
 
 
 @lru_cache(maxsize=20)
-def get_weather_for_location(location):
-    lat, long = location.split(',')
-    url = f"{weather_url}/{lat}%2C{long}/today?unitGroup=metric" \
+def get_weather(latitude, longitude):
+    url = f"{weather_url}/{latitude}%2C{longitude}/today?unitGroup=metric" \
           f"&key={APIKey}&contentType=json"
-
     jsonData = None
     try:
         response = requests.request(
@@ -135,6 +133,26 @@ def get_weather_for_location(location):
         logging.error(e)
     if not jsonData or 'currentConditions' not in jsonData or "conditions" not in jsonData['currentConditions']:
         raise Exception('Current data not available')
+
+    return jsonData
+
+
+def get_weather_for_location(location):
+    lat, long = location.split(',')
+    # url = f"{weather_url}/{lat}%2C{long}/today?unitGroup=metric" \
+    #       f"&key={APIKey}&contentType=json"
+    #
+    # jsonData = None
+    # try:
+    #     response = requests.request(
+    #         "GET", url, headers={'Content-Type': 'application/json'})
+    #     jsonData = response.json()
+    # except Exception as e:
+    #     logging.error(e)
+    # if not jsonData or 'currentConditions' not in jsonData or "conditions" not in jsonData['currentConditions']:
+    #     raise Exception('Current data not available')
+
+    jsonData = get_weather(lat, long)
 
     currentConditions = jsonData['currentConditions']
     currentWeather = currentConditions.get("conditions").lower().strip()

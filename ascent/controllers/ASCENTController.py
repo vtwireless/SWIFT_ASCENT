@@ -7,6 +7,7 @@ import pandas as pd
 
 from settings import settings
 from Utilities import Utilities
+from algorithms import PrioritizationFramework
 
 
 class SIMInput:
@@ -52,8 +53,15 @@ class ASCENTController:
 
         self.FSS_COOR = [37.20250, -80.43444]  # Hard-coded
 
-        self.rain = True
-        self.rain_rate = 33.0  # FSS location's rain rate in mm/h -> YES
+        self.rain, self.rain_rate = False, 0.0
+
+        try:
+            fss_weather_info = PrioritizationFramework.get_weather(self.FSS_COOR[0], self.FSS_COOR[1])
+            self.rain_rate = fss_weather_info.get("days")[0]["precip"]
+            if self.rain_rate != float(0):
+                self.rain = True
+        except Exception as err:
+            print(err)
 
         self.BASE_STATIONS = self.generate_BS_list(self.BS_COUNT)
 
