@@ -1,8 +1,8 @@
 {
     "radius": 5000,
-    "exclusion_radius": 1099.5412479883555,
+    "exclusion_radius": 500,
     "exclusion_radius_step": 500,
-    "simulation_count": 3,
+    "simulation_count": 1,
     "bs_ue_max_radius": 1000,
     "bs_ue_min_radius": 1,
     "rain": false,
@@ -24,7 +24,7 @@
             "updated": 1491931840,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "18643776-7632-4599-ac95-c10e001f88bc",
+            "unique_id": "d34855d4-7792-4759-9550-7772fe1e92fb",
             "dist_from_FSS": 1837.7533172967146
         },
         {
@@ -43,7 +43,7 @@
             "updated": 1479555225,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "6d9549de-ec96-42b1-9d12-8d76f145a9ce",
+            "unique_id": "445604e0-b2ed-403a-bdee-2246793d6a24",
             "dist_from_FSS": 4081.881696229133
         },
         {
@@ -62,7 +62,7 @@
             "updated": 1479576548,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "c2c02fd8-c43b-4565-ae8c-679ff87bee68",
+            "unique_id": "a14b056b-a49e-460c-9e5f-b6b9b64874de",
             "dist_from_FSS": 3710.6183188951486
         },
         {
@@ -81,7 +81,7 @@
             "updated": 1477155991,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "058b80e0-fed7-44a8-b9ec-f1a550fdd9ba",
+            "unique_id": "a5190409-10b4-4a01-9a45-75c28f26f84f",
             "dist_from_FSS": 2365.733976834437
         },
         {
@@ -100,7 +100,7 @@
             "updated": 1473235293,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "a3355718-633a-4bea-af29-933c8eaa76da",
+            "unique_id": "9126b13d-a09e-4c1c-a340-b5b4fe91a765",
             "dist_from_FSS": 2773.929570109285
         },
         {
@@ -119,7 +119,7 @@
             "updated": 1473191254,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "a135b7c2-f58c-4349-9262-7a3addcdc99e",
+            "unique_id": "af733cb1-370e-443b-bc8b-c2b81539361e",
             "dist_from_FSS": 3818.2613591714135
         },
         {
@@ -138,7 +138,7 @@
             "updated": 1489446412,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "0b8c8175-7144-4dd4-9cbf-d515072499d1",
+            "unique_id": "3a8c0a7b-4b69-447c-9b73-2cf297b533f8",
             "dist_from_FSS": 5630.529486667398
         },
         {
@@ -157,7 +157,7 @@
             "updated": 1474352285,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "1bcf3072-68f4-42bc-861a-466bd50a724b",
+            "unique_id": "3d017340-2826-42e2-8728-a71f1b35790e",
             "dist_from_FSS": 2381.7045400202283
         },
         {
@@ -176,7 +176,7 @@
             "updated": 1482422269,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "17916c0d-af55-4929-944b-9f6dad4f2ac2",
+            "unique_id": "dc1dcca0-dc4c-4b83-a932-5f7b0a09ebda",
             "dist_from_FSS": 4365.397626637301
         },
         {
@@ -195,7 +195,7 @@
             "updated": 1490357014,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "48f99aa9-4d7a-46a5-9ba5-e29445d50cf7",
+            "unique_id": "10320974-c411-4e70-a70b-0ac5bef3c4be",
             "dist_from_FSS": 4295.18902254132
         },
         {
@@ -214,7 +214,7 @@
             "updated": 1485822527,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "a84ca8b7-0946-4720-a500-8d141045a024",
+            "unique_id": "22f38e15-17e9-47c6-8c20-8b376ab57c61",
             "dist_from_FSS": 3218.7760868817895
         },
         {
@@ -233,7 +233,7 @@
             "updated": 1487881465,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "74e083db-9294-4e96-9d28-eae74ccad5d4",
+            "unique_id": "5ff15423-e467-4cf0-8335-4f32a0c1d0ec",
             "dist_from_FSS": 3914.0919493120564
         },
         {
@@ -252,7 +252,7 @@
             "updated": 1487881465,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "77a090b4-bf0b-4f0a-91ac-e4285cd9b348",
+            "unique_id": "78fbc152-036d-40b5-9c9c-bd2b7b45ffc0",
             "dist_from_FSS": 5485.731249493077
         },
         {
@@ -271,7 +271,7 @@
             "updated": 1490357014,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "a3a61509-bb42-4374-9884-a377c4e7227e",
+            "unique_id": "a6a34f0b-8c08-420c-aa90-1b65498fa3d6",
             "dist_from_FSS": 2723.4725350799317
         },
         {
@@ -289,8 +289,8 @@
             "created": 1443279616,
             "updated": 1443279616,
             "averageSignal": 0,
-            "status": 0,
-            "unique_id": "28a89cec-1dc3-4a2e-bc30-bc10ff4702da",
+            "status": 1,
+            "unique_id": "48f2f8e5-80c1-4972-acc2-c58acb16c621",
             "dist_from_FSS": 3065.0454532001722
         },
         {
@@ -308,8 +308,8 @@
             "created": 1434129028,
             "updated": 1434129028,
             "averageSignal": 0,
-            "status": 0,
-            "unique_id": "f5f1abcc-7724-478d-84f6-dc8246482095",
+            "status": 1,
+            "unique_id": "608b32b2-8309-4bca-bdef-e7e4b9743079",
             "dist_from_FSS": 1595.1809428793013
         },
         {
@@ -328,7 +328,7 @@
             "updated": 1435184708,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "de343655-30f9-4ad4-a8af-ee5a812b5a54",
+            "unique_id": "9c64a58f-4ad6-4f83-8672-6a15e1412c0b",
             "dist_from_FSS": 1122.1979172563147
         },
         {
@@ -347,7 +347,7 @@
             "updated": 1443279616,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "2ddd3d09-939e-454e-8e50-f005fc27c134",
+            "unique_id": "1717e5fb-020e-495f-8beb-a970e9301848",
             "dist_from_FSS": 2208.072603727569
         },
         {
@@ -366,7 +366,7 @@
             "updated": 1468677189,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "22181eb3-e421-4805-8ece-7f49cfbea50c",
+            "unique_id": "cf1101ae-f5ca-46fd-bfb6-7503f3af57d6",
             "dist_from_FSS": 5679.460091071664
         },
         {
@@ -385,7 +385,7 @@
             "updated": 1469387043,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "c17cda97-39e5-480d-add9-923e4fcba950",
+            "unique_id": "5db8573b-3095-4994-a951-88341a9833bf",
             "dist_from_FSS": 3298.7029117449474
         },
         {
@@ -404,7 +404,7 @@
             "updated": 1473630659,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "9e15f384-db17-4f4f-9985-ae645441e949",
+            "unique_id": "084a8edc-6e18-416e-89a5-04d6723a99c0",
             "dist_from_FSS": 1100.5412479883555
         },
         {
@@ -423,7 +423,7 @@
             "updated": 1479428071,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "538f6d11-db22-41f5-9546-588bcead10c4",
+            "unique_id": "23c900e9-7820-4486-bbdb-bf3bcb2332ce",
             "dist_from_FSS": 3562.5578367134563
         },
         {
@@ -442,7 +442,7 @@
             "updated": 1462999857,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "626d0393-9731-4c77-8919-da34829c67ca",
+            "unique_id": "fd50e9d9-c259-4b98-919a-968c03cfbcc2",
             "dist_from_FSS": 4367.4600501061705
         },
         {
@@ -461,7 +461,7 @@
             "updated": 1467911642,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "60ca2cc3-8641-4a89-adf0-73698e97cb4f",
+            "unique_id": "5f730e3a-fa85-4429-9d87-edbf5c9ccf9f",
             "dist_from_FSS": 3309.458718162658
         },
         {
@@ -480,7 +480,7 @@
             "updated": 1469790849,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "417251dc-0e48-46d1-84c2-becf7434defd",
+            "unique_id": "d0b357f2-6002-4960-b785-34b0a88a193b",
             "dist_from_FSS": 5080.365620311227
         },
         {
@@ -499,7 +499,7 @@
             "updated": 1474405835,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "c6ccbaec-9fa0-4937-a6c2-7c015bf87cf3",
+            "unique_id": "2583eb6c-28e0-4611-a1df-ea6dadfdc616",
             "dist_from_FSS": 4955.610200516188
         },
         {
@@ -518,7 +518,7 @@
             "updated": 1469791223,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "4e8cc217-648a-44b7-bccf-0e05659aaa92",
+            "unique_id": "575274fd-0d6d-48a0-ac3b-0bac4d5f4bba",
             "dist_from_FSS": 4783.31909097121
         },
         {
@@ -537,7 +537,7 @@
             "updated": 1469791223,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "1605093c-7e89-4480-92dc-1281683b2441",
+            "unique_id": "b138ed7e-f02b-458d-b924-4f6590f07eab",
             "dist_from_FSS": 4635.174174564358
         },
         {
@@ -556,7 +556,7 @@
             "updated": 1469789947,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "5bc534eb-d91f-425a-b18a-61e8ba633e4a",
+            "unique_id": "2e853feb-fb82-4f27-997c-a75c3b905da1",
             "dist_from_FSS": 4635.174174564358
         },
         {
@@ -575,7 +575,7 @@
             "updated": 1469791095,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "2e901f0d-8f71-4700-abd6-c70dbd612fa9",
+            "unique_id": "9f8be893-9c0c-44a8-88c2-f0eace8b4e41",
             "dist_from_FSS": 4635.174174564358
         },
         {
@@ -594,7 +594,7 @@
             "updated": 1470515351,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "2851b998-bf47-4326-9b90-5015ee20ce7c",
+            "unique_id": "284b6598-0f39-483d-aba9-189ab0c60886",
             "dist_from_FSS": 3210.82272369847
         },
         {
@@ -613,7 +613,7 @@
             "updated": 1479576548,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "ddff5c7b-75e9-4d65-9be2-bc4c3366f97b",
+            "unique_id": "2cd20b40-c407-4003-bdc3-e486bbe53431",
             "dist_from_FSS": 3512.147822266803
         },
         {
@@ -632,7 +632,7 @@
             "updated": 1435049916,
             "averageSignal": 0,
             "status": 1,
-            "unique_id": "bfc53b8e-42c3-42bc-8dcc-154d4653c31d",
+            "unique_id": "0d0c1638-e675-473a-bb5b-5c9f98b1d7a5",
             "dist_from_FSS": 3731.1082592021553
         }
     ]
