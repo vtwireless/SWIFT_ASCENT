@@ -230,15 +230,28 @@ class ASCENTController:
             threshold = settings.INR_THRESHOLD["default"]
 
         changed, changes = False, 0
+        computed_exclusion_zone = self.EXCLUSION_ZONE_RADIUS
         for index in range(self.BS_COUNT):
             if interference_values[index] > threshold and self.BASE_STATIONS.iloc[index]['status'] != 0:
                 self.BASE_STATIONS.iloc[index, self.BASE_STATIONS.columns.get_loc('status')] = 0
                 changed = True
                 changes += 1
 
-                if self.BASE_STATIONS.iloc[index]["dist_from_FSS"] > self.EXCLUSION_ZONE_RADIUS:
-                    self.EXCLUSION_ZONE_RADIUS = round(self.BASE_STATIONS.iloc[index].to_dict()["dist_from_FSS"], 2)
+                if self.BASE_STATIONS.iloc[index]["dist_from_FSS"] > computed_exclusion_zone:
+                    computed_exclusion_zone = round(self.BASE_STATIONS.iloc[index].to_dict()["dist_from_FSS"], 2)
 
+        flag = False
+        for bs in self.BASE_STATIONS.sort_values('dist_from_FSS').to_dict("records"):
+            distance_from_fss = bs["dist_from_FSS"]
+            status = bs["status"]
+            if status == 1:
+                flag = True
+
+            if distance_from_fss < computed_exclusion_zone and flag:
+                computed_exclusion_zone = distance_from_fss - 1
+                break
+
+        self.EXCLUSION_ZONE_RADIUS = round(computed_exclusion_zone, 2)
         if changed:
             self.configure_simulator_settings()
 
