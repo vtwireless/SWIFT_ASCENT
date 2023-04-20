@@ -13,7 +13,8 @@ from algorithms import PrioritizationFramework
 class SIMInput:
     @staticmethod
     def get_input(lat_FSS: float, lon_FSS: float, radius: int, simulation_count: int, bs_ue_max_radius: int,
-                  bs_ue_min_radius: int, base_station_count: int, base_stations: dict, rain: bool, rain_rate: float):
+                  bs_ue_min_radius: int, base_station_count: int, base_stations: dict, rain: bool, rain_rate: float,
+                  exclusion_zone_radius: float):
         return {
             "lat_FSS": lat_FSS,
             "lon_FSS": lon_FSS,
@@ -24,7 +25,8 @@ class SIMInput:
             "base_station_count": base_station_count,
             "base_stations": base_stations,
             "rain": rain,
-            "rain_rate": rain_rate
+            "rain_rate": rain_rate,
+            "exclusion_zone_radius": exclusion_zone_radius
         }
 
 
@@ -115,7 +117,8 @@ class ASCENTController:
             self.BS_COUNT,
             self.BASE_STATIONS.to_dict("records"),
             self.rain,
-            self.rain_rate
+            self.rain_rate,
+            self.EXCLUSION_ZONE_RADIUS
         )
 
     def generate_BS_list(self, bs_count):
@@ -136,7 +139,7 @@ class ASCENTController:
             & (all_data["longitude"] >= (self.FSS_COOR[1] - longitude_range))
             & (all_data["latitude"] <= (self.FSS_COOR[0] + latitude_range))
             & (all_data["latitude"] >= (self.FSS_COOR[0] - latitude_range))
-            ].copy(deep=True)
+        ].copy(deep=True)
 
         if len(data_within_zone) > bs_count:
             data_within_zone = data_within_zone.sample(n=bs_count)
